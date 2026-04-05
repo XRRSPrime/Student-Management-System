@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可视化演示：学生管理与乒乓球模拟</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>学生管理与乒乓球胜率模拟</h1>
+        <p>交互式前端演示：管理学生数据并比较两种乒乓球赛制。</p>
+    </header>
+
+    <nav>
+        <button id="tabStudents" class="active">学生管理</button>
+        <button id="tabPingpong">乒乓球模拟</button>
+    </nav>
+
+    <main>
+        <section id="studentsSection" class="panel active">
+            <h2>学生管理系统</h2>
+            <div class="card form-card">
+                <h3>添加 / 更新学生</h3>
+                <div class="form-grid">
+                    <label>学号<input id="stuNumber" type="text" placeholder="例如：2023001" /></label>
+                    <label>姓名<input id="stuName" type="text" placeholder="张三" /></label>
+                    <label>成绩1<input id="stuScore1" type="number" min="0" max="150" value="0" /></label>
+                    <label>成绩2<input id="stuScore2" type="number" min="0" max="150" value="0" /></label>
+                    <label>成绩3<input id="stuScore3" type="number" min="0" max="150" value="0" /></label>
+                </div>
+                <div class="button-row">
+                    <button id="btnAddStudent">添加 / 更新</button>
+                    <button id="btnDeleteStudent">删除</button>
+                </div>
+            </div>
+
+            <div class="card search-card">
+                <h3>查询</h3>
+                <div class="search-row">
+                    <label>按学号查询<input id="searchByNumber" type="text" placeholder="学号" /></label>
+                    <button id="btnSearchNumber">查询</button>
+                </div>
+                <div class="search-row">
+                    <label>按姓名查询<input id="searchByName" type="text" placeholder="姓名或部分姓名" /></label>
+                    <button id="btnSearchName">查询</button>
+                </div>
+            </div>
+
+            <div class="card output-card">
+                <h3>学生列表</h3>
+                <div class="tables">
+                    <div>
+                        <h4>按学号升序</h4>
+                        <table id="tableByNumber"></table>
+                    </div>
+                    <div>
+                        <h4>按总分降序</h4>
+                        <table id="tableByScore"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <h3>总分可视化</h3>
+                <div id="scoreChart" class="chart"></div>
+            </div>
+        </section>
+
+        <section id="pingpongSection" class="panel">
+            <h2>乒乓球赛制模拟器</h2>
+            <div class="card form-card">
+                <h3>模拟设置</h3>
+                <label>单分获胜概率 p：<span id="probabilityValue">0.70</span></label>
+                <input id="probabilitySlider" type="range" min="0.50" max="0.95" step="0.01" value="0.70" />
+                <label>模拟次数<input id="simulationCount" type="number" min="1000" max="2000000" value="50000" /></label>
+                <div class="button-row">
+                    <button id="btnSimulate11">模拟 11 分制</button>
+                    <button id="btnSimulate21">模拟 21 分制</button>
+                    <button id="btnCompareRules">比较赛制</button>
+                </div>
+            </div>
+
+            <div class="card output-card">
+                <h3>结果展示</h3>
+                <div id="simulationResult" class="result-panel"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>开发者：上海交通大学 大一学生</p>
+        <p>使用说明：在浏览器中直接打开此页面即可体验。</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
